@@ -1,0 +1,42 @@
+[
+  {
+    "type": "things",
+    "data_dir": "/data/quark/things",
+    "weight": 1.0
+  },
+  {
+    "type": "things_v1",
+    "data_dir": "/data/quark/things_v1",
+    "weight": 1.0
+  },
+  {
+    "type": "eegimage",
+    "data_dir": "/data/quark/eegimage",
+    "weight": 0.3
+  },
+  {
+    "type": "tuev",
+    "data_dir": "/data/quark/tuev",
+    "weight": 0.1
+  },
+  {
+    "type": "tuab",
+    "data_dir": "/data/quark/tuab",
+    "weight": 0.25
+  },
+  {
+    "type": "hmc",
+    "data_dir": "/data/quark/hmc",
+    "weight": 0.1
+  },
+  {
+    "type": "eegpt_pkl",
+    "data_dir": "/data/quark/eegpt_pkl",
+    "weight": 1.0
+  },
+  {
+    "type": "alljoined",
+    "data_dir": "/data/quark/alljoined",
+    "weight": 1.0
+  }
+]

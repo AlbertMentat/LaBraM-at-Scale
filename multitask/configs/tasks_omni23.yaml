@@ -1,0 +1,74 @@
+# Omni23 task IDs, split modes, input truncation and answer semantics.
+# HMC uses 16 patches. BCIC_IV_1 labels are subject-dependent; BETA_SSVEP
+# uses numbered targets. EEGDenoiseNet uses within-subject splits.
+tasks:
+  AD65: {output_id: AD65, split_mode: cross_subject, indexed: false, source_dataset_type: ad65, truncate_patches: null,
+    classes: [healthy control, frontotemporal dementia, Alzheimer's disease],
+    instruction: "Task: dementia diagnosis. Decide whether this resting-state EEG comes from a healthy control, a patient with frontotemporal dementia, or a patient with Alzheimer's disease."}
+  PD31: {output_id: PD31, split_mode: cross_subject, indexed: false, source_dataset_type: pd31, truncate_patches: null,
+    classes: [healthy control, Parkinson's disease],
+    instruction: "Task: Parkinson's disease detection. Decide whether this EEG comes from a healthy control or a patient with Parkinson's disease."}
+  BCIC_IV_1: {output_id: BCIC_IV_1, split_mode: cross_subject, indexed: false, source_dataset_type: bcic_iv_1, truncate_patches: null,
+    classes: [motor imagery class A, motor imagery class B],
+    instruction: "Task: two-class motor imagery decoding. Decide which of the subject's two imagined movements this EEG trial corresponds to."}
+  BCIC_IV_2A: {output_id: BCIC_IV_2A, split_mode: cross_subject, indexed: false, source_dataset_type: bcic_iv_2a, truncate_patches: null,
+    classes: [left hand, right hand, both feet, tongue],
+    instruction: "Task: motor imagery decoding. Identify which movement the subject imagined during this EEG trial."}
+  SHU_MI: {output_id: SHU_MI, split_mode: cross_subject, indexed: false, source_dataset_type: shu_mi, truncate_patches: null,
+    classes: [left hand, right hand],
+    instruction: "Task: motor imagery decoding. Decide whether the subject imagined moving the left hand or the right hand."}
+  BETA_SSVEP: {output_id: BETA_SSVEP, split_mode: cross_subject, indexed: false, source_dataset_type: beta_ssvep, truncate_patches: null,
+    classes: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"],
+    instruction: "Task: SSVEP speller decoding. Identify which of the 40 flickering targets (numbered 1 to 40) the subject was attending to."}
+  Monitoring_ErrP: {output_id: Monitoring_ErrP, split_mode: cross_subject, indexed: false, source_dataset_type: monitoring_errp, truncate_patches: null,
+    classes: [correct feedback, error feedback],
+    instruction: "Task: error-related potential detection. Decide whether the subject observed correct feedback or erroneous feedback."}
+  EEGMAT: {output_id: EEGMAT, split_mode: cross_subject, indexed: false, source_dataset_type: eegmat, truncate_patches: null,
+    classes: [resting, mental arithmetic],
+    instruction: "Task: mental workload detection. Decide whether the subject was resting or performing mental arithmetic during this EEG."}
+  LEMON_gender: {output_id: LEMON_gender, split_mode: cross_subject, indexed: false, source_dataset_type: lemon_gender, truncate_patches: null,
+    classes: [female, male],
+    instruction: "Task: biometric decoding. Decide whether this resting-state EEG comes from a female or a male subject."}
+  LEMON_extraversion: {output_id: LEMON_extraversion, split_mode: cross_subject, indexed: false, source_dataset_type: lemon_extraversion, truncate_patches: null,
+    classes: [low extraversion, high extraversion],
+    instruction: "Task: personality trait decoding. Decide whether the subject's extraversion score is below or above the median."}
+  FACED: {output_id: FACED, split_mode: cross_subject, indexed: false, source_dataset_type: faced, truncate_patches: null,
+    classes: [anger, disgust, fear, sadness, neutral, amusement, inspiration, joy, tenderness],
+    instruction: "Task: fine-grained emotion recognition. Identify the emotion elicited by the video clip the subject was watching."}
+  SEED: {output_id: SEED_seed_eeg_v1, split_mode: cross_subject, indexed: false, source_dataset_type: seed, truncate_patches: null,
+    classes: [negative, neutral, positive],
+    instruction: "Task: emotion recognition. Identify the emotion the subject felt while watching a film clip during this EEG."}
+  SEED_IV: {output_id: SEED_IV_official_v1, split_mode: cross_subject, indexed: false, source_dataset_type: seed_iv, truncate_patches: null,
+    classes: [neutral, sad, fear, happy],
+    instruction: "Task: emotion recognition. Identify the emotion elicited by the film clip during this EEG segment."}
+  SEED_V: {output_id: SEED_V_official_v1, split_mode: cross_subject, indexed: false, source_dataset_type: seed_v, truncate_patches: null,
+    classes: [disgust, fear, sad, neutral, happy],
+    instruction: "Task: emotion recognition. Identify the emotion elicited by the film clip during this one-second EEG segment."}
+  SEED_VII: {output_id: SEED_VII_official_v1, split_mode: cross_subject, indexed: false, source_dataset_type: seed_vii, truncate_patches: null,
+    classes: [disgust, fear, sad, neutral, happy, anger, surprise],
+    instruction: "Task: emotion recognition. Identify the emotion elicited by the video the subject was watching during this EEG."}
+  ISRUC_S2: {output_id: ISRUC_S2, split_mode: cross_subject, indexed: false, source_dataset_type: isruc_s2, truncate_patches: null,
+    classes: [wake, N1, N2, N3, REM],
+    instruction: "Task: sleep staging. Identify the sleep stage of this polysomnography epoch."}
+  ISRUC_S3: {output_id: ISRUC_S3, split_mode: cross_subject, indexed: false, source_dataset_type: isruc_s3, truncate_patches: null,
+    classes: [wake, N1, N2, N3, REM],
+    instruction: "Task: sleep staging. Identify the sleep stage of this polysomnography epoch from a healthy sleeper."}
+  SleepEDF: {output_id: SleepEDF, split_mode: cross_subject, indexed: false, source_dataset_type: sleepedf, truncate_patches: null,
+    classes: [wake, N1, N2, N3, REM],
+    instruction: "Task: sleep staging. Identify the sleep stage of this 30-second EEG epoch."}
+  HMC: {output_id: HMC, split_mode: cross_subject, indexed: true, source_dataset_type: hmc, truncate_patches: 16,
+    classes: [wake, N1, N2, N3, REM],
+    instruction: "Task: sleep staging. Identify the sleep stage of this EEG epoch."}
+  TUAB: {output_id: TUAB_public_v3_23ch, split_mode: cross_subject, indexed: true, source_dataset_type: tuab, truncate_patches: null,
+    classes: [normal, abnormal],
+    instruction: "Task: clinical EEG screening. Decide whether this EEG recording is normal or abnormal."}
+  TUEV: {output_id: TUEV_public_v2_native_sharded, split_mode: cross_subject, indexed: true, source_dataset_type: tuev, truncate_patches: null,
+    classes: [spike and sharp wave, generalized periodic epileptiform discharge, periodic lateralized epileptiform discharge, eye movement, artifact, background],
+    instruction: "Task: EEG event classification. Identify the type of event in this EEG segment."}
+  TUSL: {output_id: TUSL, split_mode: cross_subject, indexed: true, source_dataset_type: tusl, truncate_patches: null,
+    classes: [background, seizure, slowing],
+    instruction: "Task: EEG slowing detection. Classify this EEG segment as background, seizure, or slowing."}
+  EEGDenoiseNet: {output_id: EEGDenoiseNet, split_mode: within_subject, indexed: false, source_dataset_type: eegdenoisenet, truncate_patches: null,
+    classes: [clean EEG, artifact],
+    instruction: "Task: artifact identification. Decide whether this single-channel EEG segment is clean EEG or contains an ocular or muscle artifact."}
+

@@ -1,0 +1,197 @@
+{
+  "approved_processed_fallback_sources": [
+    "EEGWorkload",
+    "Mumtaz2016"
+  ],
+  "build": {
+    "golden_r1_is_regression_reference_only": true,
+    "incomplete_build_replaced_as_whole": true,
+    "max_windows_per_tar": 10000,
+    "ready_build_immutable": true,
+    "ready_marker": "READY.json",
+    "ready_written_last": true,
+    "recording_level_resume": true,
+    "release_marker": "RELEASE_READY.json",
+    "reuse_golden_r1_tars": false,
+    "target_source_bytes_max": 100000000000,
+    "target_source_bytes_min": 50000000000
+  },
+  "channel_contract": {
+    "canonical_montage": "models.labram.standard_1020",
+    "hard_bad_channel_if_exact_constant": true,
+    "hard_bad_channel_if_nonfinite_fraction_gte": 0.01,
+    "minimum_aux_channels": 1,
+    "minimum_train_channels": 8,
+    "ordered_signature": true,
+    "signature_algorithm": "sha256",
+    "signature_length_hex": 12,
+    "signature_separator_codepoint": "U+001F"
+  },
+  "golden_reference_root": "/data/wds549-reference",
+  "leakage": {
+    "default_train": false,
+    "require_future_policy_version_to_enable": true,
+    "require_versioned_subject_recording_allowlist": true,
+    "store_in_same_release_root": true,
+    "tuh_excluded_patients": 337
+  },
+  "legacy_root": "/data/atom-wds",
+  "nonfinite_contract": {
+    "drop_heavily_nonfinite_channels": true,
+    "impute_nonfinite_for_training": false,
+    "minimum_finite_run_samples": 200,
+    "retain_short_or_nonfinite_runs_in_quarantine": true,
+    "split_remaining_signal_into_finite_runs": true
+  },
+  "padding_contract": {
+    "model_must_consume_padding_mask": true,
+    "pad_value_in_zscore_space": 0.0,
+    "retain_recording_tails": true,
+    "write_padding_mask": true,
+    "write_valid_patch_fraction": true,
+    "write_valid_samples": true
+  },
+  "policy_version": "wds-549-full-r1-policy-20260815.1",
+  "provenance_tiers": {
+    "complete_trial_or_subject_cache": 1.0,
+    "processed_fallback": 0.5,
+    "raw_header_or_continuous_hdf": 1.0
+  },
+  "quality_contract": {
+    "mild_default_train": true,
+    "mild_flags": {
+      "clip_fraction_gt": 0.0,
+      "padding_fraction_gt": 0.0,
+      "reader_fallback_used": true,
+      "removed_bad_channel_count_gt": 0,
+      "window_channel_mean_abs_max_gt": 5.0,
+      "window_channel_std_max_gt": 5.0,
+      "window_channel_std_min_lt": 0.05
+    },
+    "severe_default_train": false,
+    "severe_flags": {
+      "all_channels_bad_or_flatline": true,
+      "clip_fraction_gt": 0.05,
+      "padding_fraction_gte": 0.5,
+      "window_channel_mean_abs_max_gt": 10.0,
+      "window_channel_std_max_gt": 10.0,
+      "window_channel_std_min_lt": 0.005
+    }
+  },
+  "release_gates": {
+    "all_24723392_legacy_windows_accounted": true,
+    "all_536_sources_terminal": true,
+    "all_549_legacy_indices_accounted": true,
+    "missing_stale_duplicate_tars": 0,
+    "missing_unit_normalization_provenance": 0,
+    "scan_all_payloads": true,
+    "shape_channel_signature_errors": 0,
+    "strict_loader_canary": true,
+    "training_views_nonfinite_values": 0,
+    "verify_all_tar_sha256": true
+  },
+  "release_root": "/data/wds549",
+  "sampling": {
+    "deduplicate_exact_recordings": true,
+    "duplicate_representative_order": [
+      "raw_header_or_continuous_hdf",
+      "complete_trial_or_subject_cache",
+      "processed_fallback",
+      "logical_source_lexicographic"
+    ],
+    "effective_weight_formula": "source_weight * channel_weight * quality_weight * provenance_weight",
+    "known_duplicate_primary_overrides": {
+      "TUH_family": "TUH_full"
+    },
+    "source_weight_source": "configs/dataset_configs_tok256_final.json"
+  },
+  "schema_version": 1,
+  "scope": {
+    "additional_sources": [
+      "Alljoined-processed-v3",
+      "Things-EEG-processed"
+    ],
+    "legacy_duration_seconds": 179309006,
+    "legacy_indices": 549,
+    "legacy_logical_sources": 534,
+    "legacy_windows": 24723392,
+    "target_config_sources": 536
+  },
+  "signal_contract": {
+    "canonical_compute_dtype": "float32",
+    "clip_std": 15.0,
+    "data_layer_divide_by_100": false,
+    "h_freq_hz": 99.5,
+    "h_freq_nyquist_factor": 0.99,
+    "l_freq_hz": 0.5,
+    "legacy_checkpoint_runtime_input_scale": 0.01,
+    "max_window_seconds": 16,
+    "min_window_seconds": 4,
+    "new_tokenizer_input_scale": 1.0,
+    "normalization": "recording_or_trial_channel_zscore",
+    "normalization_epsilon": 1e-07,
+    "notch_hz": null,
+    "output_unit": "dimensionless_zscore",
+    "samples_per_patch": 200,
+    "target_sfreq_hz": 200.0,
+    "token_budget": 256,
+    "wds_output_dtype": "float16",
+    "window_overlap": false
+  },
+  "source_archive": {
+    "delete_source_objects": false,
+    "mirror_external_objects": true,
+    "mutate_source_objects": false,
+    "reference_existing_azure_objects": true,
+    "require_checksum_or_provider_etag": true,
+    "require_object_size": true,
+    "retain_legacy_wds": true
+  },
+  "status": "locked-by-user",
+  "view_precedence": [
+    "excluded_leakage",
+    "quarantine_nonfinite_or_decode",
+    "quarantine_quality_severe",
+    "aux_low_channel",
+    "aux_quality_flagged",
+    "main_train"
+  ],
+  "views": {
+    "aux_low_channel": {
+      "channel_weight": 0.25,
+      "default_train": true,
+      "quality_weight_clean": 1.0,
+      "quality_weight_flagged": 0.5
+    },
+    "aux_quality_flagged": {
+      "channel_weight": 1.0,
+      "default_train": true,
+      "quality_weight": 0.5
+    },
+    "excluded_leakage": {
+      "default_train": false,
+      "future_sampler_policy_may_enable": true,
+      "same_release_root": true,
+      "weight": 0.0
+    },
+    "main_train": {
+      "channel_weight": 1.0,
+      "default_train": true,
+      "quality_weight": 1.0
+    },
+    "paired_image_eeg": {
+      "default_train": false,
+      "requires_multimodal_sampler": true,
+      "weight": 0.0
+    },
+    "quarantine_nonfinite_or_decode": {
+      "default_train": false,
+      "weight": 0.0
+    },
+    "quarantine_quality_severe": {
+      "default_train": false,
+      "weight": 0.0
+    }
+  }
+}
+

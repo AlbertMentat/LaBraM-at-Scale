@@ -1,0 +1,21 @@
+{
+  "datasets_across_collections": 523,
+  "reference_rows": 836,
+  "collections": {
+    "quark": {
+      "datasets": 9,
+      "hours": 25067.204,
+      "training_windows": 4200222
+    },
+    "atom": {
+      "datasets": 521,
+      "hours": 49627.972,
+      "training_windows": 24723392
+    },
+    "molecule": {
+      "datasets": 505,
+      "hours": 79909.528,
+      "training_windows": 35207959
+    }
+  }
+}

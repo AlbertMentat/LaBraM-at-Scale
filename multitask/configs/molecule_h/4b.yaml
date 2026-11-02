@@ -1,0 +1,142 @@
+encoder:
+  name: Molecule-H
+  repo_root: ..
+  model: labram_huge_patch200_200
+  checkpoint: /data/checkpoints/molecule-huge.safetensors
+  checkpoint_sha256: 5d7fcfa7a9a276d046737067f3bc68bf344976eb1fcce98d59687d3a6d370ec7
+  verify_sha: true
+  input_contract: legacy_uv
+  input_scale: 1.0
+  zscore: true
+  amp: fp16
+  unfreeze_last_n_blocks: 0
+  drop_path: 0.0
+seed: 42
+output_root: /data/outputs/multitask
+tasks_config: configs/tasks_omni23.yaml
+tasks:
+- AD65
+- PD31
+- BCIC_IV_1
+- BCIC_IV_2A
+- SHU_MI
+- BETA_SSVEP
+- Monitoring_ErrP
+- EEGMAT
+- LEMON_gender
+- LEMON_extraversion
+- FACED
+- SEED
+- SEED_IV
+- SEED_V
+- SEED_VII
+- ISRUC_S2
+- ISRUC_S3
+- SleepEDF
+- HMC
+- TUAB
+- TUEV
+- TUSL
+- EEGDenoiseNet
+data:
+  index_root: /data/omnibench
+  path_map: {}
+  subset_manifest: null
+  shard_cache_dir: null
+  num_workers: 32
+  feats_on_gpu: false
+feature_cache:
+  shared_dir: /data/features/multitask_legacy_unused
+  local_dir: null
+  publish: true
+  root: /data/features/multitask
+  batch_size: 128
+feature_norm:
+  stats: task
+projector:
+  pooling: avg
+  num_tokens: 32
+  mlp_ratio: 1.0
+sampling:
+  alpha: 0.3
+prompts:
+  multi_template: true
+train:
+  batch_size: 64
+  log_every: 50
+  eval_every: 1000
+  class_balanced_tasks: []
+  nollm_steps: 8000
+  nollm_lr: 0.001
+  stages:
+  - name: align
+    steps: 8000
+    lr: 0.001
+    warmup: 200
+  - name: lora
+    steps: 4000
+    lr: 0.0001
+    warmup: 100
+    weight_decay: 0.01
+    patience: 3
+    lora:
+      r: 16
+      alpha: 32
+      dropout: 0.1
+      targets:
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+  micro_batch: 16
+  base_global_batch: 64
+  lr_scaling: none
+  length_bucketing: true
+  class_balance: all
+  joint:
+    steps: 16000
+    warmup: 500
+    lr_projector: 0.001
+    lr_lora: 0.0001
+    weight_decay_projector: 0.0
+    weight_decay_lora: 0.01
+    patience: 4
+    lora:
+      r: 16
+      alpha: 32
+      dropout: 0.1
+      targets:
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+eval:
+  batch_size: 64
+  val_cap_per_task: 1000
+  test_cap_per_task: 300
+  final_gen_cap_per_task: 200
+  template_eval_cap: 300
+  gen_batch_size: 32
+  cand_rows: 256
+  logit_chunk: 512
+split_seed: 42
+dist:
+  backend: nccl
+  fsdp: false
+llm:
+  gradient_checkpointing: false
+  hf_id: Qwen/Qwen3-4B
+  revision: 1cfa9a7208912126459214e8b04321603b3df60c
+  path: null
+seeds:
+- 42
+- 10
+- 5
+run_name: molecule_h__qwen3-4b__joint
+implementation: grid

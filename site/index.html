@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LaBraM at Scale: ten EEG encoders, up to 79,910 hours of pretraining data, and evaluation across 23 classification tasks.">
+  <meta name="theme-color" content="#07151B">
+  <meta property="og:title" content="LaBraM at Scale">
+  <meta property="og:description" content="Scaling data and models for EEG pretraining. Explore the models, results, and technical report.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://albertmentat.github.io/LaBraM-at-Scale/">
+  <meta property="og:image" content="https://albertmentat.github.io/LaBraM-at-Scale/assets/overview.png">
+  <meta property="og:image:alt" content="Full fine-tuning and linear-probing results for the ten LaBraM at Scale encoders.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://albertmentat.github.io/LaBraM-at-Scale/">
+  <title>LaBraM at Scale · EEG Pretraining</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-wrap">
+  <a class="wordmark" href="#top" aria-label="LaBraM at Scale home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20h5l4-13 7 23 4-16h6"/></svg><span>LaBraM <strong>at Scale</strong></span></a>
+  <nav id="main-nav" aria-label="Main navigation"><a href="#figures">Figures</a><a href="#results">Results</a><a href="#task-results">Main table</a><a href="#models">Models</a><a href="#findings">Findings</a></nav>
+  <a href="#resources" class="nav-paper">Resources <span aria-hidden="true">↗</span></a>
+  <button type="button" id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation"><span></span><span></span></button>
+</div></header>
+<main id="main">
+
+<section class="hero-stage" id="top" aria-labelledby="project-title">
+  <div class="hero-art" aria-hidden="true"><img src="assets/neural-field.webp" alt="" width="1600" height="1400" fetchpriority="high"><div class="field-caption"><span class="field-marker"></span> EEG · PRETRAINED REPRESENTATIONS</div></div>
+  <div class="hero wrap">
+    <p class="eyebrow hero-eyebrow"><span class="status-dot"></span> LaBraM · EEG foundation models</p>
+    <h1 id="project-title"><span>LaBraM</span><em>at Scale<span class="title-mark" aria-hidden="true"></span></em></h1>
+    <p class="hero-subtitle">Scaling Data and Models<br>for EEG Pretraining</p>
+    <p class="hero-description">Ten encoders. Up to 79,910 hours of EEG. Scaling LaBraM’s original design leads to strong transfer across 23 downstream tasks.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="assets/report.pdf" data-paper target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 12h6M9 16h6"/></svg>Technical report <span aria-hidden="true">↗</span></a>
+      <span data-release="github" data-label="Code" data-variant="button"></span>
+      <span data-release="huggingFace" data-label="Model weights" data-variant="button"></span>
+    </div>
+  </div>
+  <div class="hero-bottom wrap">
+    <div class="study-meta"><span><strong data-value="modelCount">10</strong> encoders</span><i></i><span><strong>5.8M–1.97B</strong> parameters</span><i></i><span><strong data-value="tasks">23</strong> tasks</span><i></i><span><strong data-value="seeds">3</strong> seeds</span></div>
+    <a class="hero-scroll" href="#figures"><span>Explore the research</span><span class="scroll-arrow" aria-hidden="true">↓</span></a>
+  </div>
+</section>
+<section class="research-team wrap" aria-label="Authors and institutions">
+  <div id="authors" class="authors" hidden></div>
+  <p class="affiliations"><span><sup>1</sup> Shanghai Jiao Tong University</span><span><sup>2</sup> Fudan University</span><span><sup>3</sup> Microsoft Research Asia</span></p>
+</section>
+<section class="hero-proof wrap" aria-label="Benchmark highlights and pretraining collections">
+  <div class="proof-heading"><span>Downstream performance</span><a href="#results">Explore the benchmark <span aria-hidden="true">↗</span></a></div>
+  <div class="proof-grid">
+    <article class="headline-result" data-headline="ft"></article>
+    <article class="headline-result" data-headline="lp"></article>
+    <div class="collection-panel">
+      <p class="mini-label">Three pretraining collections</p>
+      <div class="collection-scale quark" data-collection="Quark"><div><strong>Quark</strong><span>25,067 <small>h</small></span></div><div class="scale-track"><i style="width:31.369%"></i></div></div>
+      <div class="collection-scale atom" data-collection="Atom"><div><strong>Atom</strong><span>49,628 <small>h</small></span></div><div class="scale-track"><i style="width:62.104%"></i></div></div>
+      <div class="collection-scale molecule" data-collection="Molecule"><div><strong>Molecule</strong><span>79,910 <small>h</small></span></div><div class="scale-track"><i style="width:100%"></i></div></div>
+      <p class="collection-footnote">Hours of EEG before epoch repetition.</p>
+    </div>
+  </div>
+  <p class="metric-note">Mean balanced accuracy across 23 tasks. * marks the checkpoint selected by mean Full-FT performance. <a href="#evaluation-note">Evaluation protocol ↗</a></p>
+</section>
+
+<section class="figure-section section-pad" id="figures"><div class="wrap">
+      <div class="section-title-row"><div><p class="eyebrow">01 / Performance</p><h2>Pretraining at scale.<br>Downstream gains.</h2></div><p>Compare downstream performance across models, encoder sizes and pretraining durations.</p></div>
+      <div class="figure-card">
+        <div class="figure-toolbar"><div class="figure-tabs" role="tablist" aria-label="Result figure"><button type="button" role="tab" id="figure-tab-overview" aria-selected="true" aria-controls="figure-panel" tabindex="0" data-figure="overview">Model overview</button><button type="button" role="tab" id="figure-tab-parameters" aria-selected="false" aria-controls="figure-panel" tabindex="-1" data-figure="parameters">Encoder size</button><button type="button" role="tab" id="figure-tab-duration" aria-selected="false" aria-controls="figure-panel" tabindex="-1" data-figure="duration">Pretraining duration</button><button type="button" role="tab" id="figure-tab-training" aria-selected="false" aria-controls="figure-panel" tabindex="-1" data-figure="training">Training dynamics</button></div><span class="figure-task-label"><span data-value="tasks">23</span> tasks · Full-FT &amp; LP</span></div>
+        <figure class="result-figure" id="figure-panel" role="tabpanel" aria-labelledby="figure-tab-overview">
+          <a class="figure-image-link" id="figure-image-link" href="assets/overview.png" target="_blank" rel="noopener" aria-label="Open model overview figure at full resolution"><img id="result-figure-image" src="assets/overview.png" alt="Full-FT and LP performance of LaBraM at Scale models and starred Atom versions, compared with the strongest baseline." loading="lazy" decoding="async"></a>
+          <figcaption><p id="result-figure-caption">LaBraM at Scale and the strongest baseline in Full-FT and LP.</p><a class="inline-link" id="figure-open-link" href="assets/overview.png" target="_blank" rel="noopener">Open full image <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+      </div>
+      <p class="figure-note">Mean balanced accuracy across <span data-value="tasks">23</span> tasks. LP uses the better pooled or no-pool readout for each model and task. <a href="#task-results">Explore every model and task ↓</a></p>
+    </div></section>
+<section class="results-section wrap section-pad" id="results">
+      <div class="section-title-row"><div><p class="eyebrow">02 / Benchmark</p><h2>Measured across<br>23 tasks.</h2></div><p>Compare mean balanced accuracy and average task rank across <span data-value="ftCount">32</span> Full-FT configurations and <span data-value="lpCount">29</span> pretrained LP configurations.</p></div>
+      <p class="results-table-jump"><a class="inline-link" href="#task-results">View every model and task <span aria-hidden="true">↓</span></a></p>
+      <div class="benchmark-controls"><div class="segmented" role="group" aria-label="Transfer setting"><button class="active" type="button" data-method="ft" aria-pressed="true">Full fine-tuning</button><button type="button" data-method="lp" aria-pressed="false">Linear probing</button></div><div class="metric-control"><label for="ranking-metric">Rank by</label><select id="ranking-metric"><option value="mean">Mean performance</option><option value="avgRank">Average task rank</option></select></div></div>
+      <div class="benchmark"><div class="benchmark-summary"><div><span class="mini-label" id="benchmark-label">Full fine-tuning · Mean balanced accuracy</span><h3 id="benchmark-winner">Atom-L*</h3><p id="benchmark-context">Highest mean Full-FT performance.</p></div><div class="benchmark-score"><strong id="benchmark-score">59.05<span>%</span></strong><span id="benchmark-direction">Higher is better</span></div></div>
+        <div class="ranking-key"><span><i class="ours-key"></i> LaBraM at Scale</span><span><i class="baseline-key"></i> Baselines</span><span id="ranking-scale">Mean balanced accuracy (%)</span></div>
+        <div class="table-scroll"><table class="ranking-table"><caption class="sr-only" id="ranking-caption">Full fine-tuning ranked by mean balanced accuracy</caption><thead><tr><th scope="col">Rank</th><th scope="col">Model</th><th scope="col" id="score-column">Mean performance (%)</th></tr></thead><tbody id="ranking-rows"></tbody></table></div>
+        <div class="benchmark-bottom"><span id="ranking-count" aria-live="polite"></span><button type="button" class="inline-link" id="show-all" aria-controls="ranking-rows">Show all models <span aria-hidden="true">↓</span></button></div>
+      </div>
+      <div class="evaluation-note" id="evaluation-note"><h3>Evaluation protocol</h3><p>Default models use the last evaluated full-data checkpoint; Atom* models use the checkpoint with the highest mean Full-FT score. Training uses at most 40 windows per subject–class pair. Hyperparameters are selected using seed-42 test results. LP uses the better pooled or no-pool three-seed test mean for each model and task.</p><details><summary>Evaluation details</summary><p>Validation selects the checkpoint within each downstream fit. The same hyperparameters are used for seeds 10 and 5. SleepEDF uses pooled LP, and LP ties prefer pooled features. Lower average task ranks are better; tied results share their average rank.</p><p>The report provides the full evaluation settings, pretraining overlap analysis and shared-Qwen3 experiments.</p></details><a class="inline-link" href="assets/results.csv" download>Download comparison data <span aria-hidden="true">↓</span></a></div>
+    </section>
+<section class="task-results-section section-pad" id="task-results"><div class="wrap task-results-wrap">
+      <div class="section-title-row"><div><p class="eyebrow">03 / Complete results</p><h2>Every model.<br>Every task.</h2></div><p>All <span data-value="tasks">23</span> tasks, with each model’s three-seed balanced accuracy. Compare individual tasks alongside the overall mean and average task rank.</p></div>
+      <div class="task-table-toolbar">
+        <div class="segmented" role="group" aria-label="Main table transfer setting"><button type="button" class="active" data-task-method="ft" aria-pressed="true">Full fine-tuning</button><button type="button" data-task-method="lp" aria-pressed="false">Linear probing</button></div>
+        <div class="task-downloads"><a href="assets/results_ft.csv" id="task-download" download>Download Full-FT CSV <span aria-hidden="true">↓</span></a><a href="assets/results_per_task.csv" download>All results + seeds <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="task-filters">
+        <label class="task-search" for="task-model-search"><span>Find a model</span><input type="search" id="task-model-search" placeholder="Model name" autocomplete="off"></label>
+        <label class="task-category" for="task-category"><span>Task group</span><select id="task-category"><option value="all">All tasks</option></select></label>
+        <label class="task-variation"><input type="checkbox" id="task-show-sd"> Show ± SD</label>
+      </div>
+      <div class="task-table-caption"><span id="task-table-count" aria-live="polite">32 configurations · 23 tasks</span><div class="task-scroll-controls"><button type="button" id="tasks-scroll-left" aria-label="Scroll task columns left" aria-controls="task-table-scroll">←</button><span>Scroll across tasks</span><button type="button" id="tasks-scroll-right" aria-label="Scroll task columns right" aria-controls="task-table-scroll">→</button></div></div>
+      <div class="task-table-scroll" id="task-table-scroll" tabindex="0" role="region" aria-label="Complete task results, scroll horizontally and vertically" aria-describedby="task-table-note">
+        <table class="task-table" id="task-table"><caption class="sr-only" id="task-matrix-caption">Full fine-tuning: every model and task</caption><thead id="task-table-head"></thead><tbody id="task-table-body"></tbody></table>
+      </div>
+      <p class="task-empty" id="task-empty" hidden>No models match this name. Clear the search to show all models.</p>
+      <div class="task-table-notes" id="task-table-note"><p><span class="best-cell legend-cell">Best</span> marks the leading value in each column, including ties. Click a column heading to sort. Mean and Avg. rank cover all 23 tasks, even when a task group is selected.</p><p>Task scores are mean balanced accuracy (%) over seeds 42, 10 and 5; ± SD shows their sample standard deviation. LP uses the better pooled or no-pool result per model and task; SleepEDF uses pooled features. <a href="#evaluation-note">Evaluation protocol ↗</a></p></div>
+    </div></section>
+
+<section class="findings-section section-pad" id="findings"><div class="wrap">
+  <div class="section-title-row"><div><p class="eyebrow">04 / Findings</p><h2>What improves.<br>What saturates.</h2></div><p>Larger encoders help Full-FT more consistently than LP. More data and lower pretraining loss do not always improve downstream scores.</p></div>
+  <div class="insight-grid">
+    <article class="insight"><span class="insight-number">01</span><h3>Larger encoders favor Full-FT.</h3><p>Full-FT improves with encoder size within each collection. LP gains are less consistent across Base, Large, Huge and Giant.</p><a class="inline-link" data-paper data-page="10" href="assets/report.pdf#page=10" target="_blank" rel="noopener">Model scaling ↗</a></article>
+    <article class="insight"><span class="insight-number">02</span><h3>Data gains depend on capacity.</h3><p>Fraction sweeps suggest a saturation region. An exploratory fit places the peak near 22,000 hours for Base and 40,000 hours for Large.</p><a class="inline-link" data-paper data-page="14" href="assets/report.pdf#page=14" target="_blank" rel="noopener">Duration and saturation ↗</a></article>
+    <article class="insight"><span class="insight-number">03</span><h3>Lower loss can mean weaker transfer.</h3><p>Full-FT and LP can decline as pretraining loss falls. Downstream evaluation is needed to choose a useful training duration and checkpoint.</p><a class="inline-link" data-paper data-page="15" href="assets/report.pdf#page=15" target="_blank" rel="noopener">Training trajectories ↗</a></article>
+    <article class="insight"><span class="insight-number">04</span><h3>Keeping patch features improves LP.</h3><p>No-pool probes retain patch structure and outperform average pooling in the matched readout comparison.</p><a class="inline-link" data-paper data-page="46" href="assets/report.pdf#page=46" target="_blank" rel="noopener">Pooled and no-pool LP ↗</a></article>
+    <article class="insight"><span class="insight-number">05</span><h3>LP and FT can rank models differently.</h3><p>A higher LP score does not imply a higher Full-FT score. Fine-tuning reaches a higher performance ceiling in the overall comparison.</p><a class="inline-link" data-paper data-page="47" href="assets/report.pdf#page=47" target="_blank" rel="noopener">FT–LP ranking comparison ↗</a></article>
+    <article class="insight"><span class="insight-number">06</span><h3>EEG scaling helps multitask transfer.</h3><p>Shared EEG–Qwen3 classification benefits from more EEG pretraining data and larger encoders. Increasing LLM size alone gives no consistent improvement.</p><a class="inline-link" data-paper data-page="16" href="assets/report.pdf#page=16" target="_blank" rel="noopener">Multitask results ↗</a></article>
+  </div>
+</div></section>
+
+<section class="models-section section-pad" id="models"><div class="wrap">
+      <div class="section-title-row"><div><p class="eyebrow">05 / The model families</p><h2>Three collections.<br>Ten pretrained encoders.</h2></div><p>Ten encoders span 5.8M to 1.97B parameters. Filter by pretraining collection.</p></div>
+      <div class="family-overview" id="family-overview"></div>
+      <div class="catalog-header"><div class="segmented" role="group" aria-label="Filter models by family"><button type="button" class="active" data-family="all" aria-pressed="true">All models</button><button type="button" data-family="Quark" aria-pressed="false">Quark</button><button type="button" data-family="Atom" aria-pressed="false">Atom</button><button type="button" data-family="Molecule" aria-pressed="false">Molecule</button></div><span class="catalog-count" id="catalog-count" aria-live="polite"></span></div>
+      <div class="table-scroll" role="region" aria-label="Model catalog, scroll horizontally on small screens" tabindex="0"><table class="model-table"><caption class="sr-only">Extension model specifications and mean balanced accuracy</caption><thead><tr><th scope="col">Model</th><th scope="col">Parameters</th><th scope="col">Pretraining hours</th><th scope="col">Full-FT</th><th scope="col">LP</th><th scope="col">Weights</th></tr></thead><tbody id="model-rows"></tbody></table></div>
+      <p class="table-note">Full-FT and LP report mean balanced accuracy (%). Weights and metadata are available on Hugging Face.</p>
+    </div></section>
+<section class="approach wrap section-pad" id="approach">
+      <div class="approach-heading"><p class="eyebrow">06 / Training</p><h2>Scaling LaBraM</h2><p>Different electrode layouts require compatible batches and controlled window lengths. Sharded loading and distributed training let us train larger encoders on the expanded collections.</p><a class="inline-link" data-paper href="assets/report.pdf#page=4" data-page="4" target="_blank" rel="noopener">The technical changes <span aria-hidden="true">↗</span></a></div>
+      <div class="pipeline"><article><span class="step-number">01</span><div><h3>Prepare heterogeneous EEG</h3><p>Standardize signals, preserve electrode identity and set window lengths to fit the token budget.</p><div class="step-tags"><span>Signal preparation</span><span>Variable windows</span></div></div></article><article><span class="step-number">02</span><div><h3>Batch by channel layout</h3><p>Group recordings by electrode layout and track valid samples in each window.</p><div class="step-tags"><span>Layout-aware batches</span><span>Validity masks</span></div></div></article><article><span class="step-number">03</span><div><h3>Stream and distribute training</h3><p>Read sharded data through node-local caches and train with distributed computation and mixed precision.</p><div class="step-tags"><span>WebDataset</span><span>FSDP</span><span>Mixed precision</span></div></div></article></div>
+    </section>
+<section class="resources-section section-pad" id="resources"><div class="wrap"><div class="resource-intro"><p class="eyebrow">Continue the research</p><h2>Report, code<br>and models.</h2><p>Read the report, run the training and evaluation code, or download pretrained models.</p></div><div class="resource-list"><a class="resource-item" href="assets/report.pdf" data-paper target="_blank" rel="noopener"><span class="resource-number">01</span><div><h3><span class="resource-file-icon" aria-hidden="true">↗</span>Technical report</h3><p>Methods, pretraining sources and complete evaluation results.</p></div><span class="resource-arrow" aria-hidden="true">↗</span></a><div class="resource-item" id="code-resource"><span class="resource-number">02</span><div><h3><img src="assets/icons/github.svg" alt="" width="22" height="22">Code on GitHub</h3><p>Pretraining, fine-tuning, linear probing and EEG–Qwen3.</p></div><span data-release="github" data-label="GitHub" class="resource-status"></span></div><div class="resource-item" id="weights-resource"><span class="resource-number">03</span><div><h3><img src="assets/icons/huggingface.svg" alt="" width="24" height="24">Models on Hugging Face</h3><p>Quark, Atom and Molecule checkpoints and metadata.</p></div><span data-release="huggingFace" data-label="Models" class="resource-status"></span></div></div></div></section>
+<section class="citation-section wrap" id="citation" hidden><h2>Citation</h2><div class="citation-box"><pre id="bibtex"></pre><button class="button" id="copy-citation" type="button">Copy BibTeX</button><p class="sr-only" id="copy-status" aria-live="polite"></p></div></section>
+<noscript><p class="wrap noscript-message">Enable JavaScript to explore the results, or <a href="assets/report.pdf">read the technical report</a>.</p></noscript>
+</main>
+<footer class="wrap site-footer"><div><a class="footer-title" href="#top">LaBraM at Scale</a><p>Built on <a href="https://openreview.net/forum?id=QzTpTRVtrP" target="_blank" rel="noopener">LaBraM</a> · Code and EEG weights released under MIT.</p></div><a class="inline-link" href="#top">Back to top ↑</a></footer>
+</body>
+</html>

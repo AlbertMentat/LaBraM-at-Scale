@@ -1,0 +1,14 @@
+# Python 3.10. Install the matching PyTorch CPU/CUDA wheels first; see docs/INSTALLATION.md.
+# Core pretraining, tokenizer, FT, LP and WDS dependencies.
+torch==2.8.0
+torchvision==0.23.0
+numpy==2.2.6
+scipy==1.15.3
+pandas==2.2.3
+scikit-learn==1.6.1
+timm==0.9.16
+einops==0.8.1
+tensorboardX==2.6.2.2
+pyyaml==6.0.2
+huggingface_hub==0.30.2
+safetensors==0.5.3
