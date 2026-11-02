@@ -12,7 +12,7 @@ Jun-Yu Pan · Ruicheng Yin · Bao-Liang Lu · Dongsheng Li · Wei-Long Zheng · 
   <a href="https://huggingface.co/Pan-Junyu/LaBraM-at-Scale"><img src="docs/assets/links/hf-weights.svg" height="36" alt="Hugging Face · Weights"></a>
 </p>
 
-[Technical report](site/assets/report.pdf) · [Project page source](site/) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md)
+[Technical report](site/assets/report.pdf) · [Project page](https://albertmentat.github.io/LaBraM-at-Scale/) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md)
 
 </div>
 
@@ -97,7 +97,7 @@ EEG recordings differ in channel layout and duration. We set window lengths by c
 | Fine-tune or train a linear probe | [Downstream evaluation](docs/USAGE.md#downstream-evaluation) |
 | Train a shared EEG–Qwen3 classifier | [Multitask guide](multitask/README.md) |
 | Understand the implementation changes | [Implementation notes](docs/IMPLEMENTATION_VS_OFFICIAL_LABRAM.md) |
-| Explore all benchmark results | [Project page source](site/) · [Page maintenance](docs/PROJECT_PAGE.md) |
+| Explore all benchmark results | [Project page](https://albertmentat.github.io/LaBraM-at-Scale/) · [Page maintenance](docs/PROJECT_PAGE.md) |
 
 The loaders use prepared data. Pretraining datasets are listed in the [technical report](site/assets/report.pdf) and the [machine-readable inventory](data_manifests/pretraining/datasets.csv); obtain them from their source providers. [data_manifests/](data_manifests/) contains downstream split snapshots, sample indices and input requirements. Dataset-specific preprocessing and split construction, baseline implementations and task-specific adapters are maintained separately.
 
