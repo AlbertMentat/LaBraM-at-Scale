@@ -7,12 +7,14 @@
 Jun-Yu Pan · Ruicheng Yin · Bao-Liang Lu · Dongsheng Li · Wei-Long Zheng · Yansen Wang
 
 <p>
+  <a href="https://arxiv.org/abs/2611.03165"><img src="docs/assets/links/arxiv-paper.svg" height="36" alt="arXiv · Paper"></a>
+  &nbsp;
   <a href="https://github.com/AlbertMentat/LaBraM-at-Scale"><img src="docs/assets/links/github-code.svg" height="36" alt="GitHub · Code"></a>
   &nbsp;
   <a href="https://huggingface.co/Pan-Junyu/LaBraM-at-Scale"><img src="docs/assets/links/hf-weights.svg" height="36" alt="Hugging Face · Weights"></a>
 </p>
 
-[Technical report](site/assets/report.pdf) · [Project page](https://albertmentat.github.io/LaBraM-at-Scale/) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md)
+[Paper on arXiv](https://arxiv.org/abs/2611.03165) · [PDF](https://arxiv.org/pdf/2611.03165) · [Project page](https://albertmentat.github.io/LaBraM-at-Scale/) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md)
 
 </div>
 
@@ -100,6 +102,22 @@ EEG recordings differ in channel layout and duration. We set window lengths by c
 | Explore all benchmark results | [Project page](https://albertmentat.github.io/LaBraM-at-Scale/) · [Page maintenance](docs/PROJECT_PAGE.md) |
 
 The loaders use prepared data. Pretraining datasets are listed in the [technical report](site/assets/report.pdf) and the [machine-readable inventory](data_manifests/pretraining/datasets.csv); obtain them from their source providers. [data_manifests/](data_manifests/) contains downstream split snapshots, sample indices and input requirements. Dataset-specific preprocessing and split construction, baseline implementations and task-specific adapters are maintained separately.
+
+## Citation
+
+If you use this work, please cite our [paper](https://arxiv.org/abs/2611.03165).
+
+```bibtex
+@misc{pan2026labramscalescalingdata,
+  title={LaBraM at Scale: Scaling Data and Models for EEG Pretraining},
+  author={Jun-Yu Pan and Ruicheng Yin and Bao-Liang Lu and Dongsheng Li and Wei-Long Zheng and Yansen Wang},
+  year={2026},
+  eprint={2611.03165},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2611.03165},
+}
+```
 
 ## Acknowledgements and licensing
 

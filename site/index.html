@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LaBraM at Scale: ten EEG encoders, up to 79,910 hours of pretraining data, and evaluation across 23 classification tasks.">
+  <meta name="citation_title" content="LaBraM at Scale: Scaling Data and Models for EEG Pretraining">
+  <meta name="citation_author" content="Pan, Jun-Yu">
+  <meta name="citation_author" content="Yin, Ruicheng">
+  <meta name="citation_author" content="Lu, Bao-Liang">
+  <meta name="citation_author" content="Li, Dongsheng">
+  <meta name="citation_author" content="Zheng, Wei-Long">
+  <meta name="citation_author" content="Wang, Yansen">
+  <meta name="citation_publication_date" content="2026/11/02">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2611.03165">
+  <meta name="citation_arxiv_id" content="2611.03165">
   <meta name="theme-color" content="#07151B">
   <meta property="og:title" content="LaBraM at Scale">
   <meta property="og:description" content="Scaling data and models for EEG pretraining. Explore the models, results, and technical report.">
@@ -16,9 +26,9 @@
   <title>LaBraM at Scale · EEG Pretraining</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script src="site-config.js" defer></script>
+  <script src="site-config.js?v=2611.03165" defer></script>
   <script src="data.js" defer></script>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=2611.03165" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -38,7 +48,7 @@
     <p class="hero-subtitle">Scaling Data and Models<br>for EEG Pretraining</p>
     <p class="hero-description">Ten encoders. Up to 79,910 hours of EEG. Scaling LaBraM’s original design leads to strong transfer across 23 downstream tasks.</p>
     <div class="hero-actions">
-      <a class="button primary" href="assets/report.pdf" data-paper target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 12h6M9 16h6"/></svg>Technical report <span aria-hidden="true">↗</span></a>
+      <a class="button primary" href="https://arxiv.org/abs/2611.03165" data-paper target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 12h6M9 16h6"/></svg>Paper on arXiv <span aria-hidden="true">↗</span></a>
       <span data-release="github" data-label="Code" data-variant="button"></span>
       <span data-release="huggingFace" data-label="Model weights" data-variant="button"></span>
     </div>
@@ -112,12 +122,12 @@
 <section class="findings-section section-pad" id="findings"><div class="wrap">
   <div class="section-title-row"><div><p class="eyebrow">04 / Findings</p><h2>What improves.<br>What saturates.</h2></div><p>Larger encoders help Full-FT more consistently than LP. More data and lower pretraining loss do not always improve downstream scores.</p></div>
   <div class="insight-grid">
-    <article class="insight"><span class="insight-number">01</span><h3>Larger encoders favor Full-FT.</h3><p>Full-FT improves with encoder size within each collection. LP gains are less consistent across Base, Large, Huge and Giant.</p><a class="inline-link" data-paper data-page="10" href="assets/report.pdf#page=10" target="_blank" rel="noopener">Model scaling ↗</a></article>
-    <article class="insight"><span class="insight-number">02</span><h3>Data gains depend on capacity.</h3><p>Fraction sweeps suggest a saturation region. An exploratory fit places the peak near 22,000 hours for Base and 40,000 hours for Large.</p><a class="inline-link" data-paper data-page="14" href="assets/report.pdf#page=14" target="_blank" rel="noopener">Duration and saturation ↗</a></article>
-    <article class="insight"><span class="insight-number">03</span><h3>Lower loss can mean weaker transfer.</h3><p>Full-FT and LP can decline as pretraining loss falls. Downstream evaluation is needed to choose a useful training duration and checkpoint.</p><a class="inline-link" data-paper data-page="15" href="assets/report.pdf#page=15" target="_blank" rel="noopener">Training trajectories ↗</a></article>
-    <article class="insight"><span class="insight-number">04</span><h3>Keeping patch features improves LP.</h3><p>No-pool probes retain patch structure and outperform average pooling in the matched readout comparison.</p><a class="inline-link" data-paper data-page="46" href="assets/report.pdf#page=46" target="_blank" rel="noopener">Pooled and no-pool LP ↗</a></article>
-    <article class="insight"><span class="insight-number">05</span><h3>LP and FT can rank models differently.</h3><p>A higher LP score does not imply a higher Full-FT score. Fine-tuning reaches a higher performance ceiling in the overall comparison.</p><a class="inline-link" data-paper data-page="47" href="assets/report.pdf#page=47" target="_blank" rel="noopener">FT–LP ranking comparison ↗</a></article>
-    <article class="insight"><span class="insight-number">06</span><h3>EEG scaling helps multitask transfer.</h3><p>Shared EEG–Qwen3 classification benefits from more EEG pretraining data and larger encoders. Increasing LLM size alone gives no consistent improvement.</p><a class="inline-link" data-paper data-page="16" href="assets/report.pdf#page=16" target="_blank" rel="noopener">Multitask results ↗</a></article>
+    <article class="insight"><span class="insight-number">01</span><h3>Larger encoders favor Full-FT.</h3><p>Full-FT improves with encoder size within each collection. LP gains are less consistent across Base, Large, Huge and Giant.</p><a class="inline-link" data-paper data-page="10" href="https://arxiv.org/pdf/2611.03165#page=10" target="_blank" rel="noopener">Model scaling ↗</a></article>
+    <article class="insight"><span class="insight-number">02</span><h3>Data gains depend on capacity.</h3><p>Fraction sweeps suggest a saturation region. An exploratory fit places the peak near 22,000 hours for Base and 40,000 hours for Large.</p><a class="inline-link" data-paper data-page="14" href="https://arxiv.org/pdf/2611.03165#page=14" target="_blank" rel="noopener">Duration and saturation ↗</a></article>
+    <article class="insight"><span class="insight-number">03</span><h3>Lower loss can mean weaker transfer.</h3><p>Full-FT and LP can decline as pretraining loss falls. Downstream evaluation is needed to choose a useful training duration and checkpoint.</p><a class="inline-link" data-paper data-page="15" href="https://arxiv.org/pdf/2611.03165#page=15" target="_blank" rel="noopener">Training trajectories ↗</a></article>
+    <article class="insight"><span class="insight-number">04</span><h3>Keeping patch features improves LP.</h3><p>No-pool probes retain patch structure and outperform average pooling in the matched readout comparison.</p><a class="inline-link" data-paper data-page="46" href="https://arxiv.org/pdf/2611.03165#page=46" target="_blank" rel="noopener">Pooled and no-pool LP ↗</a></article>
+    <article class="insight"><span class="insight-number">05</span><h3>LP and FT can rank models differently.</h3><p>A higher LP score does not imply a higher Full-FT score. Fine-tuning reaches a higher performance ceiling in the overall comparison.</p><a class="inline-link" data-paper data-page="47" href="https://arxiv.org/pdf/2611.03165#page=47" target="_blank" rel="noopener">FT–LP ranking comparison ↗</a></article>
+    <article class="insight"><span class="insight-number">06</span><h3>EEG scaling helps multitask transfer.</h3><p>Shared EEG–Qwen3 classification benefits from more EEG pretraining data and larger encoders. Increasing LLM size alone gives no consistent improvement.</p><a class="inline-link" data-paper data-page="16" href="https://arxiv.org/pdf/2611.03165#page=16" target="_blank" rel="noopener">Multitask results ↗</a></article>
   </div>
 </div></section>
 
@@ -129,12 +139,21 @@
       <p class="table-note">Full-FT and LP report mean balanced accuracy (%). Weights and metadata are available on Hugging Face.</p>
     </div></section>
 <section class="approach wrap section-pad" id="approach">
-      <div class="approach-heading"><p class="eyebrow">06 / Training</p><h2>Scaling LaBraM</h2><p>Different electrode layouts require compatible batches and controlled window lengths. Sharded loading and distributed training let us train larger encoders on the expanded collections.</p><a class="inline-link" data-paper href="assets/report.pdf#page=4" data-page="4" target="_blank" rel="noopener">The technical changes <span aria-hidden="true">↗</span></a></div>
+      <div class="approach-heading"><p class="eyebrow">06 / Training</p><h2>Scaling LaBraM</h2><p>Different electrode layouts require compatible batches and controlled window lengths. Sharded loading and distributed training let us train larger encoders on the expanded collections.</p><a class="inline-link" data-paper href="https://arxiv.org/pdf/2611.03165#page=4" data-page="4" target="_blank" rel="noopener">The technical changes <span aria-hidden="true">↗</span></a></div>
       <div class="pipeline"><article><span class="step-number">01</span><div><h3>Prepare heterogeneous EEG</h3><p>Standardize signals, preserve electrode identity and set window lengths to fit the token budget.</p><div class="step-tags"><span>Signal preparation</span><span>Variable windows</span></div></div></article><article><span class="step-number">02</span><div><h3>Batch by channel layout</h3><p>Group recordings by electrode layout and track valid samples in each window.</p><div class="step-tags"><span>Layout-aware batches</span><span>Validity masks</span></div></div></article><article><span class="step-number">03</span><div><h3>Stream and distribute training</h3><p>Read sharded data through node-local caches and train with distributed computation and mixed precision.</p><div class="step-tags"><span>WebDataset</span><span>FSDP</span><span>Mixed precision</span></div></div></article></div>
     </section>
-<section class="resources-section section-pad" id="resources"><div class="wrap"><div class="resource-intro"><p class="eyebrow">Continue the research</p><h2>Report, code<br>and models.</h2><p>Read the report, run the training and evaluation code, or download pretrained models.</p></div><div class="resource-list"><a class="resource-item" href="assets/report.pdf" data-paper target="_blank" rel="noopener"><span class="resource-number">01</span><div><h3><span class="resource-file-icon" aria-hidden="true">↗</span>Technical report</h3><p>Methods, pretraining sources and complete evaluation results.</p></div><span class="resource-arrow" aria-hidden="true">↗</span></a><div class="resource-item" id="code-resource"><span class="resource-number">02</span><div><h3><img src="assets/icons/github.svg" alt="" width="22" height="22">Code on GitHub</h3><p>Pretraining, fine-tuning, linear probing and EEG–Qwen3.</p></div><span data-release="github" data-label="GitHub" class="resource-status"></span></div><div class="resource-item" id="weights-resource"><span class="resource-number">03</span><div><h3><img src="assets/icons/huggingface.svg" alt="" width="24" height="24">Models on Hugging Face</h3><p>Quark, Atom and Molecule checkpoints and metadata.</p></div><span data-release="huggingFace" data-label="Models" class="resource-status"></span></div></div></div></section>
-<section class="citation-section wrap" id="citation" hidden><h2>Citation</h2><div class="citation-box"><pre id="bibtex"></pre><button class="button" id="copy-citation" type="button">Copy BibTeX</button><p class="sr-only" id="copy-status" aria-live="polite"></p></div></section>
-<noscript><p class="wrap noscript-message">Enable JavaScript to explore the results, or <a href="assets/report.pdf">read the technical report</a>.</p></noscript>
+<section class="resources-section section-pad" id="resources"><div class="wrap"><div class="resource-intro"><p class="eyebrow">Continue the research</p><h2>Report, code<br>and models.</h2><p>Read the report, run the training and evaluation code, or download pretrained models.</p></div><div class="resource-list"><a class="resource-item" href="https://arxiv.org/abs/2611.03165" data-paper target="_blank" rel="noopener"><span class="resource-number">01</span><div><h3><span class="resource-file-icon" aria-hidden="true">↗</span>Paper on arXiv</h3><p>arXiv:2611.03165 · Methods, pretraining sources and complete results.</p></div><span class="resource-arrow" aria-hidden="true">↗</span></a><div class="resource-item" id="code-resource"><span class="resource-number">02</span><div><h3><img src="assets/icons/github.svg" alt="" width="22" height="22">Code on GitHub</h3><p>Pretraining, fine-tuning, linear probing and EEG–Qwen3.</p></div><span data-release="github" data-label="GitHub" class="resource-status"></span></div><div class="resource-item" id="weights-resource"><span class="resource-number">03</span><div><h3><img src="assets/icons/huggingface.svg" alt="" width="24" height="24">Models on Hugging Face</h3><p>Quark, Atom and Molecule checkpoints and metadata.</p></div><span data-release="huggingFace" data-label="Models" class="resource-status"></span></div></div></div></section>
+<section class="citation-section wrap" id="citation"><h2>Citation</h2><div class="citation-box"><pre id="bibtex">@misc{pan2026labramscalescalingdata,
+  title={LaBraM at Scale: Scaling Data and Models for EEG Pretraining},
+  author={Jun-Yu Pan and Ruicheng Yin and Bao-Liang Lu and Dongsheng Li and Wei-Long Zheng and Yansen Wang},
+  year={2026},
+  eprint={2611.03165},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2611.03165},
+}
+</pre><button class="button" id="copy-citation" type="button">Copy BibTeX</button><p class="sr-only" id="copy-status" aria-live="polite"></p></div></section>
+<noscript><p class="wrap noscript-message">Enable JavaScript to explore the results, or <a href="https://arxiv.org/abs/2611.03165">read the technical report</a>.</p></noscript>
 </main>
 <footer class="wrap site-footer"><div><a class="footer-title" href="#top">LaBraM at Scale</a><p>Built on <a href="https://openreview.net/forum?id=QzTpTRVtrP" target="_blank" rel="noopener">LaBraM</a> · Code and EEG weights released under MIT.</p></div><a class="inline-link" href="#top">Back to top ↑</a></footer>
 </body>

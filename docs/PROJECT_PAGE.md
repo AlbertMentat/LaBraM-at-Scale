@@ -21,4 +21,4 @@ The model catalog contains the ten default encoders. Rankings and task tables al
 
 To publish `site/`, select GitHub Actions under repository Settings → Pages, then run the manual **Deploy project page** [workflow](../.github/workflows/pages.yml).
 
-Citation stays hidden while `citationBibtex` in `site-config.js` is empty. Add the arXiv URL and BibTeX after submission.
+The paper is available as [arXiv:2611.03165](https://arxiv.org/abs/2611.03165). `paperUrl` links to the abstract page; `paperPdfUrl` opens the PDF for links to specific pages. The citation section uses the official arXiv BibTeX in `citationBibtex`.

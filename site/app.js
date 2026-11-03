@@ -45,12 +45,13 @@
   const remoteUrl = value => {
     try { const url = new URL(value); return url.protocol === 'https:' ? url.href : ''; } catch { return ''; }
   };
-  const paperUrl = (() => {
-    const value = config.paperUrl || 'assets/report.pdf';
+  const paperLink = value => {
     try { const url = new URL(value, document.baseURI); return ['https:', 'http:', 'file:'].includes(url.protocol) ? value : 'assets/report.pdf'; } catch { return 'assets/report.pdf'; }
-  })();
+  };
+  const paperUrl = paperLink(config.paperUrl || 'assets/report.pdf');
+  const paperPdfUrl = paperLink(config.paperPdfUrl || 'assets/report.pdf');
   document.querySelectorAll('[data-paper]').forEach(link => {
-    link.href = paperUrl + (link.dataset.page ? '#page=' + link.dataset.page : '');
+    link.href = link.dataset.page ? paperPdfUrl + '#page=' + link.dataset.page : paperUrl;
   });
   function releaseLink(container) {
     const key = container.dataset.release === 'github' ? 'githubUrl' : 'huggingFaceUrl';
