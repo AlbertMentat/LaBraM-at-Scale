@@ -6,6 +6,34 @@ import json
 import shutil
 from pathlib import Path
 
+
+def load_entry(repo, revision, variant, model_id, tokenizer=False):
+    """Read the release configuration, with support for older repository revisions."""
+    from huggingface_hub import hf_hub_download
+    from huggingface_hub.utils import EntryNotFoundError, LocalEntryNotFoundError
+
+    key = 'tokenizers' if tokenizer else 'models'
+    try:
+        config_path = hf_hub_download(repo, 'config.json', revision=revision)
+    except LocalEntryNotFoundError:
+        raise
+    except EntryNotFoundError:
+        prefix = '' if variant == 'default' else 'best-full-ft/'
+        manifest_path = hf_hub_download(repo, prefix+'manifest.json', revision=revision)
+        collection = json.loads(Path(manifest_path).read_text())
+        entries = [dict(entry, file=prefix+entry['file'])
+                   for entry in collection.get(key, [])]
+    else:
+        config = json.loads(Path(config_path).read_text())
+        if config.get('schema_version') != 1:
+            raise ValueError('Unsupported release configuration schema')
+        entries = config['variants'][variant][key]
+    for entry in entries:
+        if entry['id'] == model_id:
+            return entry
+    raise ValueError(f'{model_id} is not available in the {variant} collection')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group(required=True)
@@ -25,18 +53,15 @@ def main():
     from huggingface_hub import hf_hub_download
     repo = args.repo_id
     prefix = '' if args.variant == 'default' else 'best-full-ft/'
-    manifest_path = hf_hub_download(repo, prefix+'manifest.json', revision=args.revision)
-    manifest = json.loads(Path(manifest_path).read_text())
     model_id = args.tokenizer+'-tokenizer' if args.tokenizer else args.model
-    entries = manifest['tokenizers'] if args.tokenizer else manifest['models']
-    entry = next(m for m in entries if m['id'] == model_id)
-    source = Path(hf_hub_download(repo, prefix+entry['file'], revision=args.revision))
+    entry = load_entry(repo, args.revision, args.variant, model_id, bool(args.tokenizer))
+    source = Path(hf_hub_download(repo, entry['file'], revision=args.revision))
     digest = hashlib.sha256()
     with source.open('rb') as stream:
         for chunk in iter(lambda: stream.read(8*1024*1024), b''):
             digest.update(chunk)
     if digest.hexdigest() != entry['export_sha256']:
-        raise RuntimeError('Downloaded weight does not match the manifest SHA-256')
+        raise RuntimeError('Downloaded weight does not match the release SHA-256')
     target = args.output_dir / prefix / (model_id+'.safetensors')
     target.parent.mkdir(parents=True, exist_ok=True)
     if source.resolve() != target.resolve():

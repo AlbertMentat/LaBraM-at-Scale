@@ -74,7 +74,7 @@ python -m pip check
 python scripts/download_checkpoint.py --model molecule-base
 ```
 
-The downloader verifies the weight SHA-256. Add `--variant best-full-ft` to obtain a model selected by its best evaluated Full-FT mean. Use `--tokenizer quark`, `--tokenizer atom` or `--tokenizer molecule` to download the matching original tokenizer. The [Hugging Face model card](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale) describes both sets, containing ten weight files each.
+The downloader reads the [model configuration](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale/blob/main/config.json) and verifies the weight SHA-256. Add `--variant best-full-ft` to obtain a model selected by its best evaluated Full-FT mean. Use `--tokenizer quark`, `--tokenizer atom` or `--tokenizer molecule` to download the matching original tokenizer. The [Hugging Face model card](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale) describes both sets, containing ten weight files each.
 
 ### Fine-tune or probe
 

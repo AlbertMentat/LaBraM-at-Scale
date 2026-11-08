@@ -13,4 +13,4 @@
 | `docs/` | Installation, usage and implementation guides |
 | `data_manifests/` | Pretraining source inventory, downstream split snapshots and sample indices |
 
-Released EEG weights, architectures, file hashes and per-tensor metadata are maintained in the [Hugging Face manifest](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale/blob/main/manifest.json). Model selection and experimental results are described in the [technical report](site/assets/report.pdf).
+Released EEG weights, architectures, file hashes and per-tensor metadata are maintained in the [Hugging Face configuration](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale/blob/main/config.json). Model selection and experimental results are described in the [technical report](site/assets/report.pdf).

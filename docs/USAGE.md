@@ -28,7 +28,7 @@ python scripts/download_checkpoint.py --model molecule-base
 python scripts/download_checkpoint.py --model atom-large --variant best-full-ft
 ```
 
-The downloader checks SHA-256 against the corresponding manifest. Use `--repo-id` to select another HF repository and `--revision` to pin a commit. FT, LP and multitask entrypoints accept `.safetensors` directly. Released files contain the full pretrained model state; loaders select the encoder tensors. Fine-tuned task heads and EEG–Qwen3 adapters are separate.
+The downloader reads `config.json` to select the requested model or tokenizer and checks its SHA-256 before saving it. Use `--repo-id` to select another HF repository and `--revision` to pin a commit. FT, LP and multitask entrypoints accept `.safetensors` directly. Released files contain the full pretrained model state; loaders select the encoder tensors. Fine-tuned task heads and EEG–Qwen3 adapters are separate.
 
 | Model size | `MODEL` | File suffix |
 |:---|:---|:---|
@@ -37,7 +37,7 @@ The downloader checks SHA-256 against the corresponding manifest. Use `--repo-id
 | Huge | `labram_huge_patch200_200` | `huge.safetensors` |
 | Giant (Quark only) | `labram_giant_patch200_200` | `giant.safetensors` |
 
-File paths follow `<family>/<family>-<size>.safetensors`, for example `atom/atom-large.safetensors` or `quark/quark-giant.safetensors`. The [manifest](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale/blob/main/manifest.json) records architectures, file identities and SHA-256 checksums.
+File paths follow `<family>/<family>-<size>.safetensors`, for example `atom/atom-large.safetensors` or `quark/quark-giant.safetensors`. The [model configuration](https://huggingface.co/Pan-Junyu/LaBraM-at-Scale/blob/main/config.json) records both weight collections, tokenizers, architectures, input normalization and SHA-256 checksums.
 
 ### Run one fit
 
